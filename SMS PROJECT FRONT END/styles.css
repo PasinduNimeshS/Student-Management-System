@@ -1,0 +1,106 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Header Styles */
+header {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-left,
+.header-right {
+    width: 50%;
+}
+
+.header-left img,
+.header-right img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content {
+    position: relative;
+    height: calc(100% - 120px);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Images/Home1.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.text {
+    position: absolute;
+    top: 30%; /* Position the text at the vertical center */
+    left: 0; /* Align text to the left */
+    transform: translateY(-50%); /* Center the text vertically */
+    z-index: 1;
+    padding: 30px 20px; /* Adjust padding as needed */
+}
+
+.system-title {
+    color: #1c0f52; /* Header color */
+    font-size: 6vw; /* Set font size relative to viewport width */
+    font-weight: bold;
+    line-height: 1.2; /* Adjust line height for better readability */
+    margin: 0; /* Remove default margin */
+}
+
+.login-button {
+    border: 2px solid #1c0f52; /* Button border color */
+    background-color: transparent; /* Transparent background */
+    color: #1c0f52; /* Button text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+    border-radius: 24px; /* Set border radius */
+    margin-top: 20px; /* Add margin above the button */
+    position: absolute; /* Position the button absolutely */
+    left: 20px; /* Align the button with the left edge of the text */
+}
+
+.login-button:hover {
+    background-color: #1c0f52; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* Set the width of the overlay */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+

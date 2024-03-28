@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Management System</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    
+    <header>
+        <img src="Images/Header Left.JPG" class="left-image" alt="Left Image">
+        <img src="Images/Header right.JPG" class="right-image" alt="Right Image">
+    </header>
+
+    <!-- Content section -->
+    
+        <!-- Left layer with text "Student Management System" -->
+        <div class="left-layer"  style=>
+            <div class="text">
+                <h2 class="system-title">Student<br>Management<br>System</h2>
+            </div>    
+        </div>
+
+        <!-- Right layer with login form -->
+        <div class="right-layer" ">
+            <div class="right-layer-inner">
+                <div class="box form-box">
+                    <form action="login.php" method="post">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username" autocomplete="username">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password" autocomplete="current-password">
+                        <input type="submit" value="Login">
+                    </form>
+                </div>
+            </div>
+    </div>
+
+    <!-- Include footer from index.html -->
+    <footer>
+        <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
+    </footer>
+</body>
+</html>

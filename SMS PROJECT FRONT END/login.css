@@ -1,0 +1,91 @@
+.left-layer {
+    float: left;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    top: 30; /* left align text */
+    
+}
+.right-layer {
+    float: left;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 100%; /* Ensures the container takes up full height */
+}
+
+.right-layer-inner {
+    max-width: 400px;
+    border: 3px solid #1c0f52;
+    padding: 25px;
+    border-radius: 5px;
+}
+.text {
+    position: absolute;
+    
+    top: 50%; /* Position the text at the vertical center */
+    left: 0; /* Align text to the left */
+    transform: translateY(-50%); /* Center the text vertically */
+    z-index: 1;
+    padding: 30px 20px; /* Adjust padding as needed */
+}
+.system-title {
+    
+    padding-left: 30px;
+    color: #1c0f52; /* Header color */
+    font-size: 6vw; /* Set font size relative to viewport width */
+    font-weight: bold;
+    line-height: 1.2; /* Adjust line height for better readability */
+    margin: 0; /* Remove default margin */
+}
+form {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #1c0f52;
+    color: #fff;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #1c0f52;
+}
+footer {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+header {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student-Student Management System</title>
+    <link rel="stylesheet" href="home.css"> <!-- Ensure this file exists and contains relevant styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="Images/Header Left.JPG" class="left-image" alt="Left Image">
+        <img src="Images/Header right.JPG" class="right-image" alt="Right Image">
+    </header>
+
+    <div class="container">
+        <nav>
+            <p class="nav-title"><i class="fas fa-bars menu-icon">SMS</i></p>
+            <input type="text" placeholder="Search...">
+            <button><i class="fas fa-home"></i> Site Home</button>
+            <button><i class="fas fa-user-plus"></i> Add Student</button>
+            <button><i class="fas fa-user-minus"></i> Remove Student</button>
+            <button><i class="fas fa-list"></i> List Students</button>
+            <button><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
+            <div class="logout">
+                <button><i class="fas fa-sign-in-alt"></i> Logout</button>
+            </div>
+        </nav>
+        <div class="right-layer">
+            <div class="box">Add Student</div>
+            <form id="student-form" action="submit.php" method="POST"> <!-- Change action attribute to the appropriate endpoint -->
+                <div class="name-inputs">
+                    <div class="input-group">
+                        <label for="first-name">First Name:</label>
+                        <input type="text" id="first-name" name="first-name" placeholder="Enter first name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Enter last name" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Enter address" required>
+                </div>
+
+                <div class="name-inputs">
+                    <div class="input-group">
+                        <label for="birthday">Birthday:</label>
+                        <input type="date" id="birthday" name="birthday" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="nic-number">NIC Number:</label>
+                        <input type="text" id="nic-number" name="nic-number" placeholder="Enter NIC number" required>
+                    </div>
+                </div>
+
+                <div class="name-inputs">
+                    <div class="input-group">
+                        <label for="degree-program">Degree Program:</label>
+                        <select id="degree-program" name="degree-program" required>
+                            <option value="" disabled selected>Select a course</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="academic-year">Academic Year & Semester:</label>
+                        <select id="academic-year" name="academic-year" required>
+                            <option value="" disabled selected>Select academic year & semester </option>
+                            <option value="1st Year - 1st Semester">1st Year - 1st Semester</option>
+                            <option value="1st Year - 2nd Semester">1st Year - 2nd Semester</option>
+                            <option value="2nd Year - 1st Semester">2nd Year - 1st Semester</option>
+                            <option value="2nd Year - 2nd Semester">2nd Year - 2nd Semester</option>
+                            <option value="3rd Year - 1st Semester">3rd Year - 1st Semester</option>
+                            <option value="3rd Year - 2nd Semester">3rd Year - 2nd Semester</option>
+                            <option value="4th Year - 1st Semester">4th Year - 1st Semester</option>
+                            <option value="4th Year - 2nd Semester">4th Year - 2nd Semester</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="choose-course">Choose Course:</label>
+                    <select id="choose-course" name="choose-course" required>
+                        <option value="" disabled selected>Select a course</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+
+                <button type="submit">Done</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
+    </footer>
+</body>
+</html>

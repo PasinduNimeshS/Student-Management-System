@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+footer {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+header {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+nav {
+    background-color: #929292;
+    color: #fff;
+    padding: 20px;
+}
+
+nav input[type="text"],
+nav input[type="date"],
+nav select {
+    display: block;
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #1c0f52; /* Text color changed to #1c0f52 */
+}
+
+nav button {
+    display: block;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: calc(100% - 5px);
+    cursor: pointer;
+    text-align: left;
+}
+
+nav button i {
+    margin-right: 5px;
+}
+
+nav button:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.nav-title {
+    color: #1c0f52;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.right-layer {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.box {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    color: #1c0f52;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.details-box {
+    border: 2px solid #1c0f52;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    max-width: 600px; /* Reduce the width of the box */
+    right: 0;
+}
+
+.details-title {
+    color: #1c0f52;
+    font-weight:bolder;
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.basic-details-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.basic-details-list li {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.dropdowns {
+    margin-top: 10px;
+}
+
+.dropdowns select {
+    padding: 8px; /* Adding padding to dropdown buttons */
+    width: 20%; /* Making dropdown buttons same size */
+    display: block; /* Display dropdown buttons as block elements */
+    margin-bottom: 10px; /* Add space between dropdown buttons */
+    border-color: #1c0f52;
+    border: 2px solid;
+}
+
+.subjects-list {
+    display: flex;
+    justify-content: flex-end; /* Align subject list to the right */
+    margin-top: 10px;
+}
+
+.column {
+    flex: 1;
+}
+
+.subject {
+    margin-bottom: 5px;
+    font-size: 12px; /* Added font-size for subject items */
+}
+
+.right-layer {
+    position: relative; /* Ensure the right layer is relatively positioned */
+}
+
+
+.right-layer {
+    position: relative; /* Ensure the right layer is relatively positioned */
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.details-box {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #1c0f52;
+    padding: 15px;
+    border-radius: 4px;
+    max-width: 600px;
+}

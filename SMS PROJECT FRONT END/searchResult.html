@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result-Student Management System</title>
+    <!-- Add your CSS file link here -->
+    <link rel="stylesheet" href="searchResult.css">
+    <!-- Add your Font Awesome link here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Additional CSS for subject layout */
+        .subjects-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow subjects to wrap to the next line */
+            justify-content: space-between;
+        }
+
+        .subject {
+            flex-basis: 45%; /* Adjust the width as needed */
+            margin-bottom: 10px; /* Add margin for the gap */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Images/Header Left.JPG" class="left-image" alt="Left Image">
+        <img src="Images/Header right.JPG" class="right-image" alt="Right Image">
+    </header>
+
+    <div class="container">
+        <nav>
+            <p class="nav-title"><i class="fas fa-bars menu-icon">SMS</i></p>
+            <input type="text" placeholder="Search..." id="searchInput">
+            <!-- Add an ID to your search button for easier selection in JavaScript -->
+            <button id="searchButton"><i class="fas fa-search"></i> Search</button>
+            <button><i class="fas fa-home"></i> Site Home</button>
+            <button><i class="fas fa-user-plus"></i> Add Student</button>
+            <button><i class="fas fa-user-minus"></i> Remove Student</button>
+            <button><i class="fas fa-list"></i> List Students</button>
+            <button><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
+            <div class="logout">
+                <button><i class="fas fa-sign-in-alt"></i> Logout</button>
+            </div>
+        </nav>
+        <div class="right-layer">
+            <div class="box">Search Result</div>
+            <div class="details-box">
+                <div class="details-title">Basic Details</div>
+                <ul class="basic-details-list" id="basicDetailsList">
+                    <li><strong>Name:</strong> <span id="namePlaceholder"></span></li>
+                    <li><strong>Reg. No:</strong> <span id="regNoPlaceholder"></span></li>
+                    <li><strong>Degree Program:</strong> <span id="degreePlaceholder"></span></li>
+                    <li><strong>Birthday:</strong> <span id="birthdayPlaceholder"></span></li>
+                    <li><strong>Address:</strong> <span id="addressPlaceholder"></span></li>
+                    <li><strong>NIC No:</strong> <span id="nicPlaceholder"></span></li>
+                </ul>
+
+                <div class="details-title">Course Details</div>
+                <div class="dropdowns">
+                    <select class="year-dropdown" id="yearDropdown">
+                        <option value="" disabled selected>Year</option> <!-- Placeholder text for year dropdown -->
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <select class="semester-dropdown" id="semesterDropdown">
+                        <option value="" disabled selected>Semester</option> <!-- Placeholder text for semester dropdown -->
+                        <option value="1">1st Semester</option>
+                        <option value="2">2nd Semester</option>
+                    </select>
+                </div>
+                <div class="subjects-list" id="subjectsList">
+                    <!-- Subjects will be dynamically populated based on dropdown selection -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample data for subjects
+            const subjectsByYearAndSemester = {
+                "1": {
+                    "1": ["Subject 1", "Subject 2", "Subject 3", "Subject 4", "Subject 5", "Subject 6", "Subject 7", "Subject 8", "Subject 9", "Subject 10"],
+                    "2": ["Subject 11", "Subject 12", "Subject 13", "Subject 14", "Subject 15", "Subject 16", "Subject 17", "Subject 18", "Subject 19", "Subject 20"]
+                },
+                "2": {
+                    "1": ["Subject 21", "Subject 22", "Subject 23", "Subject 24", "Subject 25", "Subject 26", "Subject 27", "Subject 28", "Subject 29", "Subject 30"],
+                    "2": ["Subject 31", "Subject 32", "Subject 33", "Subject 34", "Subject 35", "Subject 36", "Subject 37", "Subject 38", "Subject 39", "Subject 40"]
+                },
+                "3": {
+                    "1": ["Subject 41", "Subject 42", "Subject 43", "Subject 44", "Subject 45", "Subject 46", "Subject 47", "Subject 48", "Subject 49", "Subject 50"],
+                    "2": ["Subject 51", "Subject 52", "Subject 53", "Subject 54", "Subject 55", "Subject 56", "Subject 57", "Subject 58", "Subject 59", "Subject 60"]
+                },
+                "4": {
+                    "1": ["Subject 61", "Subject 62", "Subject 63", "Subject 64", "Subject 65", "Subject 66", "Subject 67", "Subject 68", "Subject 69", "Subject 70"],
+                    "2": ["Subject 71", "Subject 72", "Subject 73", "Subject 74", "Subject 75", "Subject 76", "Subject 77", "Subject 78", "Subject 79", "Subject 80"]
+                }
+            };
+
+            function fetchDataFromServer(registrationNumber) {
+                // Sample data (replace with actual data from your server)
+                return {
+                    "Name": "Pasindu Subasinghe",
+                    "Reg. No": "D/BSE/22/0028",
+                    "Degree Program": "Software Engineering",
+                    "Birthday": "2000-05-14",
+                    "Address": "No.177 ,Pilaminawatta ,Dodangoda",
+                    "NIC No": "200013501023"
+                };
+            }
+
+            function updateBasicDetails(data) {
+                document.getElementById('namePlaceholder').textContent = data['Name'];
+                document.getElementById('regNoPlaceholder').textContent = data['Reg. No'];
+                document.getElementById('degreePlaceholder').textContent = data['Degree Program'];
+                document.getElementById('birthdayPlaceholder').textContent = data['Birthday'];
+                document.getElementById('addressPlaceholder').textContent = data['Address'];
+                document.getElementById('nicPlaceholder').textContent = data['NIC No'];
+            }
+
+            // Function to populate subjects list based on year and semester selection
+            function populateSubjectsList() {
+                const yearDropdown = document.getElementById('yearDropdown');
+                const semesterDropdown = document.getElementById('semesterDropdown');
+                const subjectsList = document.getElementById('subjectsList');
+                const selectedYear = yearDropdown.value;
+                const selectedSemester = semesterDropdown.value;
+                const subjects = subjectsByYearAndSemester[selectedYear][selectedSemester];
+
+                // Clear existing subjects list
+                subjectsList.innerHTML = '';
+
+                // Populate subjects list with new subjects, dividing into two columns
+                for (let i = 0; i < subjects.length; i += 2) {
+                    const subjectRow = document.createElement('div');
+                    subjectRow.classList.add('subject-row');
+
+                    const subject1 = document.createElement('div');
+                    subject1.classList.add('subject');
+                    subject1.textContent = subjects[i];
+                    subjectRow.appendChild(subject1);
+
+                    // Check if there's a second subject available
+                    if (i + 1 < subjects.length) {
+                        const subject2 = document.createElement('div');
+                        subject2.classList.add('subject');
+                        subject2.textContent = subjects[i + 1];
+                        subjectRow.appendChild(subject2);
+                    }
+
+                    subjectsList.appendChild(subjectRow);
+                }
+            }
+
+            // Add event listeners for dropdowns and search button
+            const yearDropdown = document.getElementById('yearDropdown');
+            const semesterDropdown = document.getElementById('semesterDropdown');
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+
+            yearDropdown.addEventListener('change', populateSubjectsList);
+            semesterDropdown.addEventListener('change', populateSubjectsList);
+
+            searchInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    const registrationNumber = searchInput.value;
+                    const data = fetchDataFromServer(registrationNumber);
+                    updateBasicDetails(data);
+                }
+            });
+
+            searchButton.addEventListener('click', function() {
+                const registrationNumber = searchInput.value;
+                const data = fetchDataFromServer(registrationNumber);
+                updateBasicDetails(data);
+            });
+
+            // Populate subjects list initially
+            populateSubjectsList();
+        });
+    </script>
+</body>
+</html>

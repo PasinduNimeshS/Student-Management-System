@@ -15,7 +15,7 @@
 
     <div class="container">
         <nav>
-            <p class="nav-title"><i class="fas fa-bars menu-icon">SMS</i></p>
+            <div class="small"><div class="white-box "><i class="fas fa-bars menu-icon"></i></div><h2>SMS</h2></h2></div><br>
             <input type="text" placeholder="Search...">
             <button><i class="fas fa-home"></i> Site Home</button>
             <button><i class="fas fa-user-plus"></i> Add Student</button>
@@ -27,8 +27,126 @@
             </div>
         </nav>
         <div class="right-layer">
-            <div class="box">Activity Logged</div>
-            
+            <div class="main-title-box">Activity Logged</div>
+            <div class="home-page-content-box">
+                <div class="elements">
+                    <div>
+                        <div class="box">
+                            <ul>
+                                <li>
+                                    <span><p class="lumba">Monday, 05 March 2024<span class="time">10:37</span></p></span>
+                                </li>
+                                <ul>
+                                    <li><p class="p1">30 new students added to the system successfully</p></li>
+                                    <li><p class="p1">5 students deleted from the system successfully</p></li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <ul>
+                                <li>
+                                    <p class="lumba">Wednesday, 03 January 2024 <span class="time">13:37</span></p>
+                                </li>
+                                <ul>
+                                    <li><p class="p1">Updated 2nd year 1st semester students course details successfully</p></li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="currentMonthYear"></div>
+                        <div class="calander_Container">
+                            <table class="calendar" id="calendar">
+                                <thead>
+                                    <tr>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="calendar-body">
+                                </tbody>
+                            </table>
+                            <script>
+                                function generateCalendar() {
+                                    const now = new Date();
+                                    const year = now.getFullYear();
+                                    const month = now.getMonth();
+
+                                    const tbody = document.getElementById('calendar-body');
+                                    tbody.innerHTML = '';
+
+                                    const startDate = new Date(year, month, 1);
+                                    const endDate = new Date(year, month + 1, 0);
+                                    const startDay = startDate.getDay();
+
+                                    let date = new Date(startDate);
+
+                                    let row = document.createElement('tr');
+                                    for (let i = 0; i < startDay; i++) {
+                                        row.appendChild(document.createElement('td'));
+                                    }
+
+                                    while (date <= endDate) {
+                                        if (date.getDay() === 0) {
+                                            tbody.appendChild(row);
+                                            row = document.createElement('tr');
+                                        }
+                                        const cell = document.createElement('td');
+                                        cell.textContent = date.getDate();
+                                        row.appendChild(cell);
+                                        date.setDate(date.getDate() + 1);
+                                    }
+
+                                    tbody.appendChild(row);
+                                }
+
+                                function displayCurrentMonthYear() {
+                                    const now = new Date();
+                                    const year = now.getFullYear();
+                                    const month = now.toLocaleString('default', { month: 'long' }); // Get the month name
+
+                                    const currentMonthYearElement = document.getElementById('currentMonthYear');
+                                    currentMonthYearElement.textContent = `${month} ${year}`;
+                                }
+
+                                generateCalendar();
+                                displayCurrentMonthYear();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button class="More">More</button>
+                <br><br><br>
+                <span class="boxes-container">
+                    <div class="boxes">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p>Degrees</p>
+                        <p><b>2</b></p>
+                    </div>
+                    <div class="boxes">
+                        <i class="fas fa-book-open"></i>
+                        <p>Courses</p>
+                        <p><b>100 +</b></p>
+                    </div>
+                    <div class="boxes">
+                        <i class="fas fa-user"></i>
+                        <p>Student</p>
+                        <p><b>500 +</b></p>
+                    </div>
+                    <div class="boxes">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <p>Lectures</p>
+                        <p><b>50 +</b></p>
+                    </div>
+                </span>
+                
+            </div>
         </div>
     </div>
 

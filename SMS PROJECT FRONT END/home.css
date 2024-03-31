@@ -72,21 +72,52 @@ nav button:hover {
     color: #333;
 }
 
-.nav-title {
-    color: #1c0f52;
-    font-size: 25px;
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.menu-icon {
+    font-size: 24px;
+    color:#1c0f52;
+}
+
+.small {
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    margin: 0;
+    color:#1c0f52;
+    padding-left: 10px;
+}
+
+.white-box {
+    width: 45px;
+    height: 30px; 
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+}
+
+.lumba {
+    flex: 1; 
+    margin-right: 10px;
+    font-size:18px;
+}
+
+.time {
+    padding-left:150px;
+    font-size:14px;
+}
+
+.p1 {
+    font-size:16px;
 }
 
 .right-layer {
-    flex: 1;
     background-color: #ffffff;
     padding: 20px;
-    overflow: hidden;
 }
-
-.box {
+.main-title-box {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 5px;
@@ -96,10 +127,101 @@ nav button:hover {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.More {
+    margin-left:445px;
+    width: 90px;
+    height: 40px;
+    background-color: #1c0f52;
+    color: #fff;
+    font-size: 23px;
+    text-align: center;
+}
+
+.box {
+    width:500px;
+    margin-left:10px;
+    margin-top:30px;
+    border: 2px solid  #1c0f52;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    color: #1c0f52;
+}
+
+.search1 {
+    display: flex;
+}
+
+.boxes-container {
+    margin-left:150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.elements {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.boxes {
+    width:150px;
+    height:100px;
+    margin-left:10px;
+    border: 2px solid  #1c0f52;
+    background-color: #ffffff;
+    padding: 10px;
+    color: #1c0f52;
+    margin-right: 50px;
+}
+
+#currentMonthYear {
+    color: #1c0f52;
+    margin-left:250px;
+    margin-bottom:10px;
+    display: flex;
+    font-size:20px;
+}
+
+.calander_Container {
+    margin-left:100px;
+    display: flex;
+}
+
 .name-inputs {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+}
+
+.boxes i {
+    display: flex;
+    margin-top:10px;
+    font-size: 30px;
+    color: #1c0f52;
+    justify-content: center;
+    align-items: center; 
+}
+
+.boxes p {
+    margin-top:10px; 
+    text-align:center;
+}
+
+.calendar {
+    width: 400px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar th {
+    background-color: #f2f2f2;
 }
 
 .input-group {
@@ -113,8 +235,6 @@ nav button:hover {
     margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="date"],
 select {
     width: 100%;
     padding: 10px;
@@ -125,11 +245,24 @@ select {
 
 input[type="date"] {
     width: calc(100% - 2px);
+    width: 300px; /* Adjust width as needed */
+    height: 40px;
+}
+
+.textbox-with-icon {
+    width:40px;
+    height:40px;
+    background-repeat: no-repeat;
+    background-image: url('icon.png');
+    background-position: center;
+    background-size: 16px; 
+    background-color:#fff;
+    margin-right:10px;
 }
 
 button {
-    background-color: #1c0f52;
-    color: #fff;
+    background-color:  #1c0f52;
+    color: #929292;
     border: none;
     padding: 10px 20px;
     border-radius: 3px;
@@ -146,4 +279,12 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #333;
+}
+
+.home-page-content-box {
+    margin: auto; /* Center the box horizontally */
+    width: fit-content; /* Adjust width to content */
+    border: 2px solid rgb(255, 255, 255); /* Add red border */
+    align-items: center;
+    padding-left: 100px;
 }

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Student-Student Management System</title>
+    <link rel="stylesheet" href="listStudents.css"> <!-- Ensure this file exists and contains relevant styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <img src="Images/Header Left.JPG" class="left-image" alt="Left Image">
+        <img src="Images/Header right.JPG" class="right-image" alt="Right Image">
+    </header>
+
+    <div class="container">
+        <nav>
+            <p class="nav-title"><i class="fas fa-bars menu-icon">SMS</i></p>
+            <input type="text" placeholder="Search..." id="searchInput">
+            <button><i class="fas fa-home"></i> Site Home</button>
+            <button><i class="fas fa-user-plus"></i> Add Student</button>
+            <button><i class="fas fa-user-minus"></i> Remove Student</button>
+            <button><i class="fas fa-list"></i> List Students</button>
+            <button><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
+            <div class="logout">
+                <button><i class="fas fa-sign-in-alt"></i> Logout</button>
+            </div>
+        </nav>
+        <div class="right-layer">
+            <div class="box">List Student</div>
+            <div class="new-box"> <!-- New box with border color -->
+                <div class="toggle-bar">
+                    <button class="toggle-btn" id="year1">1st Year</button>
+                    <button class="toggle-btn" id="year2">2nd Year</button>
+                    <button class="toggle-btn" id="year3">3rd Year</button>
+                    <button class="toggle-btn" id="year4">4th Year</button>
+                    <div class="input-group">
+                        <label for="degree-program" style="display:none;">Degree Program:</label>
+                        <select id="degree-program" name="degree-program" required>
+                            <option value="" disabled selected>Select a course</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="table-container">
+                    <table class="student-table">
+                        <thead>
+                            <tr>
+                                <th>Reg. No</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Birthday</th>
+                                <th>NIC</th>
+                                <!-- Add more columns as needed -->
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Table data will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButtons = document.querySelectorAll(".toggle-btn");
+            const degreeProgramSelect = document.getElementById("degree-program");
+            let selectedYear = null;
+
+            toggleButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    toggleButtons.forEach(btn => {
+                        btn.classList.remove("selected"); // Remove selected class from all buttons
+                    });
+                    this.classList.add("selected"); // Add selected class to the clicked button
+                    selectedYear = this.textContent;
+                    degreeProgramSelect.value = ""; // Reset dropdown selection
+                    fetchData(selectedYear); // Fetch data based on selections
+                });
+            });
+
+            degreeProgramSelect.addEventListener("change", function() {
+                fetchData(selectedYear); // Fetch data based on selections
+            });
+
+            function fetchData(year) {
+                if (year && degreeProgramSelect.value) {
+                    // Here you should write AJAX code to fetch data from the database
+                    // You need to send the selected toggle button and dropdown value to the server
+                    // The server will respond with data that should be filled in the table
+                    // For now, let's assume the data is static for demonstration purposes
+
+                    // Sample data for demonstration
+                    const sampleData = {
+    "1st Year": {
+        "Software Engineering": [
+            { regNo: "001", firstName: "John", lastName: "Doe", birthday: "1990-01-01", nic: "123456789V" },
+            { regNo: "002", firstName: "Jane", lastName: "Doe", birthday: "1992-05-15", nic: "987654321V" },
+            { regNo: "003", firstName: "Alice", lastName: "Smith", birthday: "1991-09-21", nic: "456789123V" },
+            { regNo: "004", firstName: "Bob", lastName: "Johnson", birthday: "1993-07-08", nic: "654321987V" },
+            { regNo: "005", firstName: "Emily", lastName: "Williams", birthday: "1990-03-14", nic: "789123456V" },
+            { regNo: "006", firstName: "David", lastName: "Brown", birthday: "1992-11-30", nic: "321987654V" },
+            { regNo: "007", firstName: "Sarah", lastName: "Taylor", birthday: "1991-04-18", nic: "456789123V" },
+            { regNo: "008", firstName: "Matthew", lastName: "Anderson", birthday: "1993-08-22", nic: "654987321V" },
+            { regNo: "009", firstName: "Olivia", lastName: "Martinez", birthday: "1990-12-10", nic: "789456123V" },
+            { regNo: "010", firstName: "James", lastName: "Jackson", birthday: "1992-06-03", nic: "321789456V" },
+            { regNo: "011", firstName: "Sophia", lastName: "Garcia", birthday: "1993-02-09", nic: "654321789V" },
+            { regNo: "012", firstName: "William", lastName: "Lee", birthday: "1991-11-25", nic: "987321654V" },
+            { regNo: "013", firstName: "Isabella", lastName: "Brown", birthday: "1990-05-16", nic: "789654123V" },
+            { regNo: "014", firstName: "Liam", lastName: "Hernandez", birthday: "1992-09-30", nic: "456987321V" },
+            { regNo: "015", firstName: "Mia", lastName: "Walker", birthday: "1993-03-08", nic: "123789654V" },
+            { regNo: "016", firstName: "Alexander", lastName: "Lopez", birthday: "1991-07-19", nic: "321654987V" },
+            // Add more students here...
+        ],
+        "Computer Science": [
+            { regNo: "017", firstName: "Ava", lastName: "Taylor", birthday: "1990-04-11", nic: "654123789V" },
+            { regNo: "018", firstName: "Michael", lastName: "Clark", birthday: "1992-01-26", nic: "987456321V" },
+            { regNo: "019", firstName: "Emma", lastName: "Rodriguez", birthday: "1993-06-17", nic: "789321654V" },
+            { regNo: "020", firstName: "Oliver", lastName: "Harris", birthday: "1990-10-04", nic: "456789321V" },
+            { regNo: "021", firstName: "Charlotte", lastName: "Baker", birthday: "1992-08-22", nic: "123456987V" },
+            { regNo: "022", firstName: "Ethan", lastName: "Perez", birthday: "1990-12-15", nic: "321987456V" },
+            { regNo: "023", firstName: "Amelia", lastName: "Nelson", birthday: "1991-03-29", nic: "654321987V" },
+            { regNo: "024", firstName: "Daniel", lastName: "Gonzalez", birthday: "1993-05-12", nic: "987654123V" },
+            { regNo: "025", firstName: "Avery", lastName: "Gomez", birthday: "1990-09-05", nic: "789456321V" },
+            { regNo: "026", firstName: "Logan", lastName: "Evans", birthday: "1992-11-18", nic: "456123987V" },
+            { regNo: "027", firstName: "Harper", lastName: "Parker", birthday: "1993-02-23", nic: "321789654V" },
+            { regNo: "028", firstName: "Lucas", lastName: "Collins", birthday: "1991-07-07", nic: "654987123V" },
+            { regNo: "029", firstName: "Evelyn", lastName: "Hill", birthday: "1990-04-20", nic: "987321456V" },
+            { regNo: "030", firstName: "Jackson", lastName: "Barnes", birthday: "1992-06-13", nic: "789654321V" },
+            { regNo: "031", firstName: "Madison", lastName: "Cook", birthday: "1993-09-26", nic: "123987456V" },
+            // Add more students here...
+        ],
+        // Add more courses or students here...
+    },
+    "2nd Year": {
+        "Software Engineering": [
+            { regNo: "032", firstName: "Noah", lastName: "Morales", birthday: "1991-12-09", nic: "321654789V" },
+            { regNo: "033", firstName: "Chloe", lastName: "Rogers", birthday: "1990-02-02", nic: "654321987V" },
+            { regNo: "034", firstName: "Sebastian", lastName: "Reed", birthday: "1992-05-17", nic: "987456123V" },
+            { regNo: "035", firstName: "Riley", lastName: "Howard", birthday: "1993-08-30", nic: "789123456V" },
+            { regNo: "036", firstName: "Lily", lastName: "Ward", birthday: "1991-11-12", nic: "456789123V" },
+            { regNo: "037", firstName: "Zoey", lastName: "Flores", birthday: "1990-04-25", nic: "654987321V" },
+            { regNo: "038", firstName: "Gavin", lastName: "Watson", birthday: "1992-07-08", nic: "321456789V" },
+            { regNo: "039", firstName: "Addison", lastName: "Sanders", birthday: "1993-10-21", nic: "987654321V" },
+            { regNo: "040", firstName: "Jackson", lastName: "Barnes", birthday: "1991-01-14", nic: "789321654V" },
+            { regNo: "041", firstName: "Madison", lastName: "Cook", birthday: "1992-02-27", nic: "123987456V" },
+            { regNo: "042", firstName: "Noah", lastName: "Morales", birthday: "1993-05-09", nic: "321654789V" },
+            { regNo: "043", firstName: "Chloe", lastName: "Rogers", birthday: "1990-07-12", nic: "654321987V" },
+            { regNo: "044", firstName: "Sebastian", lastName: "Reed", birthday: "1992-10-27", nic: "987456123V" },
+            { regNo: "045", firstName: "Riley", lastName: "Howard", birthday: "1993-01-30", nic: "789123456V" },
+            { regNo: "046", firstName: "Lily", lastName: "Ward", birthday: "1991-04-14", nic: "456789123V" },
+            // Add more students here...
+        ],
+        "Computer Science": [
+            { regNo: "047", firstName: "Zoey", lastName: "Flores", birthday: "1990-07-27", nic: "654987321V" },
+            { regNo: "048", firstName: "Gavin", lastName: "Watson", birthday: "1992-10-10", nic: "321456789V" },
+            { regNo: "049", firstName: "Addison", lastName: "Sanders", birthday: "1993-01-23", nic: "987654321V" },
+            { regNo: "050", firstName: "Jackson", lastName: "Barnes", birthday: "1991-04-16", nic: "789321654V" },
+            { regNo: "051", firstName: "Madison", lastName: "Cook", birthday: "1992-07-29", nic: "123987456V" },
+            { regNo: "052", firstName: "Noah", lastName: "Morales", birthday: "1993-11-11", nic: "321654789V" },
+            { regNo: "053", firstName: "Chloe", lastName: "Rogers", birthday: "1990-01-24", nic: "654321987V" },
+            { regNo: "054", firstName: "Sebastian", lastName: "Reed", birthday: "1992-04-09", nic: "987456123V" },
+            { regNo: "055", firstName: "Riley", lastName: "Howard", birthday: "1993-07-22", nic: "789123456V" },
+            { regNo: "056", firstName: "Lily", lastName: "Ward", birthday: "1991-10-05", nic: "456789123V" },
+            { regNo: "057", firstName: "Zoey", lastName: "Flores", birthday: "1990-12-18", nic: "654987321V" },
+            { regNo: "058", firstName: "Gavin", lastName: "Watson", birthday: "1992-03-03", nic: "321456789V" },
+            { regNo: "059", firstName: "Addison", lastName: "Sanders", birthday: "1993-06-16", nic: "987654321V" },
+            { regNo: "060", firstName: "Jackson", lastName: "Barnes", birthday: "1991-09-29", nic: "789321654V" },
+            // Add more students here...
+        ],
+        // Add more courses or students here...
+    },
+    // Add more years or courses here...
+};
+
+
+                    const tableBody = document.getElementById("table-body");
+                    tableBody.innerHTML = ""; // Clear existing table data
+
+                    sampleData[year][degreeProgramSelect.value].forEach(student => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${student.regNo}</td>
+                            <td>${student.firstName}</td>
+                            <td>${student.lastName}</td>
+                            <td>${student.birthday}</td>
+                            <td>${student.nic}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+footer {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+header {
+    background-color: #1c0f52;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+nav {
+    background-color: #929292;
+    color: #fff;
+    padding: 20px;
+}
+
+nav input[type="text"],
+nav input[type="date"],
+nav select {
+    display: block;
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #1c0f52; /* Text color changed to #1c0f52 */
+}
+
+nav button {
+    display: block;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: calc(100% - 5px);
+    cursor: pointer;
+    text-align: left;
+}
+
+nav button i {
+    margin-right: 5px;
+}
+
+nav button:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.nav-title {
+    color: #1c0f52;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.right-layer {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.box {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    color: #1c0f52;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/*newly added box styles*/
+.right-layer .box-new {
+    background-color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid #ffffff; /* Add border with black color */
+    color: #000000;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+
+    width: 50%; /* Reduce the width of the box */
+}
+
+.right-layer .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Reduce margin-bottom for spacing */
+}
+
+.right-layer .search-bar input[type="text"] {
+    width: calc(50% - 20px); /* Adjust width to half of the box width */
+    padding: 10px;
+    border: 1px solid #000000; /* Adjust border color */
+    border-radius: 0px 0px 0px 0px; /* Adjust border radius */
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.right-layer .search-bar .search-icon {
+    background-color: #1c0f52;
+    color: #fff;
+    border: 2px solid #1c0f52;
+    border-radius: 0 24px 24px 0;
+    padding: 11px;
+    cursor: pointer;
+    height: calc(100% - 2px); /* Set height to search bar height minus border thickness */
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
+    display: flex; /* Align content vertically */
+    align-items: center; /* Align content vertically */
+}
+
+.right-layer .list-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.right-layer .list-items li {
+    font-size: 12px;
+    color: #000000;
+    margin-bottom: 5px; /* Add margin-bottom for spacing between list items */
+}
+
+.right-layer .button-container {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-top: 10px; /* Add top margin to separate from the list items */
+}
+
+.right-layer .button-container button {
+    background-color: #1c0f52;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.right-layer .button-container button:last-child {
+    margin-left: 0; /* Remove left margin for last button */
+}
+
+.right-layer {
+    position: relative; /* Set position to relative for absolute positioning */
+}
+
+.box-new {
+    position: absolute;
+    top: 40%; /* Move to the middle vertically */
+    left: 50%; /* Move to the middle horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+}
+
+/*popup add new section styles*/
+.popup-container {
+    display: none; /* Initially hide the popup */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure the popup appears above other content */
+}
+
+.popup-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid #1c0f52; /* Blue border */
+    border-radius: 12px;
+    padding: 20px;
+    width: 50%; /* Same width as .box-new */
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popup-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1c0f52; /* Blue color */
+}
+
+.close-button {
+    background-color: #1c0f52;
+    color: white;
+    border: none;
+    padding: 0; /* Remove padding */
+    width: 40px; /* Set width and height to create a square button */
+    height: 40px;
+    border-radius: 50%; /* Ensure button is shaped as a circle */
+    cursor: pointer;
+    font-size: 25px; /* Increased font size for larger icon */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Align icon horizontally */
+    align-items: center; /* Align icon vertically */
+}
+
+.close-button:hover {
+    background-color: #392294;
+}
+
+.dropdown-container {
+    display: flex;
+}
+
+.dropdown {
+    width: 150px; /* Set width */
+    height: 40px; /* Set height */
+    margin-right: 20px; /* Add margin between dropdowns */
+    border: 2px solid #1c0f52; /* Blue border */
+    border-radius: 5px; /* Border radius */
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.part1,
+.part2,
+.part3 {
+    margin-bottom: 20px; /* Add margin between subject parts */
+}
+.subjects-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Display parts vertically */
+}
+
+.part {
+    display: flex; /* Display subjects horizontally */
+    flex-wrap: wrap; /* Enable wrapping of subjects */
+}
+
+.part + .part {
+    margin-top: 20px; /* Add space between parts vertically */
+}
+
+.part > div {
+    margin-right: 95px; /* Add space between subjects horizontally */
+    margin-bottom: 0px; /* Add space between subjects vertically */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px; /* Add some space between subjects and the button */
+}
+
+.add-button {
+    background-color: #1c0f52; /* Set button color to blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.add-button:hover {
+    background-color: rgb(49, 49, 173);
+}
+
+/* This is the styles for the view history button popup part */
+.popup-container {
+    display: none; /* Initially hide the popup */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure the popup appears above other content */
+}
+
+.popup-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid #1c0f52; /* Blue border */
+    border-radius: 12px;
+    padding: 20px;
+    width: 50%; /* Same width as .box-new */
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popup-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1c0f52; /* Blue color */
+}
+
+.close-button {
+    background-color: #1c0f52;
+    color: white;
+    border: none;
+    padding: 0; /* Remove padding */
+    width: 40px; /* Set width and height to create a square button */
+    height: 40px;
+    border-radius: 50%; /* Ensure button is shaped as a circle */
+    cursor: pointer;
+    font-size: 25px; /* Increased font size for larger icon */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Align icon horizontally */
+    align-items: center; /* Align icon vertically */
+}
+
+.close-button:hover {
+    background-color: #392294;
+}
+
+.subjects-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Display parts vertically */
+}
+
+.part {
+    display: flex; /* Display subjects horizontally */
+    flex-wrap: wrap; /* Enable wrapping of subjects */
+}
+
+.part + .part {
+    margin-top: 20px; /* Add space between parts vertically */
+}
+
+.part > div {
+    margin-right: 95px; /* Add space between subjects horizontally */
+    margin-bottom: 0px; /* Add space between subjects vertically */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px; /* Add some space between subjects and the button */
+}
+
+.done-button {
+    background-color: #1c0f52; /* Set button color to blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.done-button:hover {
+    background-color: rgb(49, 49, 173);
+}
+
+
+
+
+
+
+
+
+

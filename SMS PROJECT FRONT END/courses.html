@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course-Student Management System</title>
+    <link rel="stylesheet" href="courses.css"> <!-- Ensure this file exists and contains relevant styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="Images/Header Left.JPG" class="left-image" alt="Left Image">
+        <img src="Images/Header right.JPG" class="right-image" alt="Right Image">
+    </header>
+
+    <div class="container">
+        <nav>
+            <p class="nav-title"><i class="fas fa-bars menu-icon">SMS</i></p>
+            <input type="text" placeholder="Search...">
+            <button><i class="fas fa-home"></i> Site Home</button>
+            <button><i class="fas fa-user-plus"></i> Add Student</button>
+            <button><i class="fas fa-user-minus"></i> Remove Student</button>
+            <button><i class="fas fa-list"></i> List Students</button>
+            <button><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
+            <div class="logout">
+                <button><i class="fas fa-sign-in-alt"></i> Logout</button>
+            </div>
+        </nav>
+        <div class="right-layer">
+            <div class="box">Course</div>
+            <div class="box-new-container">
+                <div class="box-new">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Enter Student Registration number..." id="searchInput">
+                        <i class="fas fa-search search-icon" id="searchButton"></i>
+                    </div>
+                    <ul class="list-items">
+                        <li id="name">Name</li>
+                        <li id="regNo">Reg. No</li>
+                        <li id="degree">Degree Program</li>
+                    </ul>
+                    <br><br><br>
+                    <div class="button-container">
+                        <button class="add-courses-button">Add Courses</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="view-history-button">View History</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add this right after the closing tag of .right-layer -->
+        <!-- This part is the popup part of the Addcourses button -->
+        <div class="popup-container" id="popupContainer">
+            <div class="popup-box">
+                <div class="popup-header">
+                    <span class="popup-title">Add Courses</span>
+                    <button class="close-button"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="dropdown-container">
+                    <select class="dropdown" id="yearDropdown">
+                        <option value="" disabled selected>Year</option>
+                        <option value="1st">1st Year</option>
+                        <option value="2nd">2nd Year</option>
+                        <option value="3rd">3rd Year</option>
+                        <option value="4th">4th Year</option>
+                    </select>
+                    <select class="dropdown" id="semesterDropdown">
+                        <option value="" disabled selected>Semester</option>
+                        <option value="1st">1st Semester</option>
+                        <option value="2nd">2nd Semester</option>
+                    </select>
+                </div>
+                <div class="subjects-container">
+                    <div class="part1"></div>
+                    <div class="part2"></div>
+                    <div class="part3"></div>
+                </div>
+                <div class="button-container">
+                    <button id="addButton" class="add-button">Add</button>
+                </div>
+            </div>
+        </div>
+        <!-- This part is the popup parts of the view history button. -->
+        <div class="popup-container" id="historyPopupContainer">
+            <div class="popup-box">
+                <div class="popup-header">
+                    <span class="popup-title">Courses History</span>
+                    <button class="close-button"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="dropdown-container">
+                    <select class="dropdown" id="yearDropdown">
+                        <option value="" disabled selected>Year</option>
+                        <option value="1st">1st Year</option>
+                        <option value="2nd">2nd Year</option>
+                        <option value="3rd">3rd Year</option>
+                        <option value="4th">4th Year</option>
+                    </select>
+                    <select class="dropdown" id="semesterDropdown">
+                        <option value="" disabled selected>Semester</option>
+                        <option value="1st">1st Semester</option>
+                        <option value="2nd">2nd Semester</option>
+                    </select>
+                </div>
+                <div class="subjects-container">
+                    <div class="part1"></div>
+                    <div class="part2"></div>
+                    <div class="part3"></div>
+                </div>
+                <div class="button-container">
+                    <button id="doneButton" class="done-button">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const addCoursesButton = document.querySelector(".add-courses-button");
+            const viewHistoryButton = document.querySelector(".view-history-button");
+            const closeButton = document.querySelectorAll(".close-button");
+            const yearDropdown = document.getElementById("yearDropdown");
+            const semesterDropdown = document.getElementById("semesterDropdown");
+            const subjectsContainer = document.querySelector(".subjects-container");
+            const popupContainer = document.getElementById("popupContainer");
+            const historyPopupContainer = document.getElementById("historyPopupContainer");
+
+            addCoursesButton.addEventListener("click", function() {
+                subjectsContainer.innerHTML = ''; // Clear previous subjects
+                popupContainer.style.display = "block";
+                populateSubjects(); // Populate subjects when the popup opens
+            });
+
+            closeButton.forEach(button => {
+                button.addEventListener("click", function() {
+                    subjectsContainer.innerHTML = ''; // Clear subjects when closing
+                    popupContainer.style.display = "none";
+                    historyPopupContainer.style.display = "none";
+                    yearDropdown.value = ''; // Clear year dropdown selection
+                    semesterDropdown.value = ''; // Clear semester dropdown selection
+                });
+            });
+
+            viewHistoryButton.addEventListener("click", function() {
+                historyPopupContainer.style.display = "block"; // Show the history popup
+                populateSubjects(); // Populate subjects when the popup opens
+            });
+
+            yearDropdown.addEventListener("change", populateSubjects);
+            semesterDropdown.addEventListener("change", populateSubjects);
+
+            function populateSubjects() {
+                const selectedYear = yearDropdown.value;
+                const selectedSemester = semesterDropdown.value;
+                const totalSubjects = 9;
+                const subjectsPerPart = totalSubjects / 3;
+
+                if (selectedYear && selectedSemester) {
+                    subjectsContainer.innerHTML = ''; // Clear previous subjects
+
+                    for (let part = 1; part <= 3; part++) {
+                        const partElement = document.createElement('div');
+                        partElement.classList.add('part');
+
+                        for (let i = (part - 1) * subjectsPerPart + 1; i <= part * subjectsPerPart; i++) {
+                            const subjectName = `${selectedYear}.${selectedSemester} Subject${i}`;
+                            const subjectCheckbox = `<input type="checkbox" name="${subjectName}">`;
+                            const subjectElement = `<div>${subjectName}: ${subjectCheckbox}</div>`;
+                            partElement.innerHTML += subjectElement;
+                        }
+
+                        subjectsContainer.appendChild(partElement);
+                    }
+                }
+            }
+
+            // Sample dataset
+            const students = [
+                { registrationNumber: "001", name: "John Doe", regNo: "001", degree: "Computer Science" },
+                { registrationNumber: "002", name: "Jane Smith", regNo: "002", degree: "Engineering" },
+                { registrationNumber: "003", name: "Alice Johnson", regNo: "003", degree: "Biology" }
+            ];
+
+            // Function to search for a student by registration number
+            function searchStudent(registrationNumber) {
+                return students.find(student => student.registrationNumber === registrationNumber);
+            }
+
+            // Function to update list items with student details
+            function updateListItems(student) {
+                document.getElementById("name").textContent = "Name: " + student.name;
+                document.getElementById("regNo").textContent = "Reg. No: " + student.regNo;
+                document.getElementById("degree").textContent = "Degree Program: " + student.degree;
+            }
+
+            // Event listener for search button click
+            document.getElementById("searchButton").addEventListener("click", function() {
+                const searchInput = document.getElementById("searchInput");
+                const registrationNumber = searchInput.value.trim();
+                const student = searchStudent(registrationNumber);
+                if (student) {
+                    updateListItems(student);
+                } else {
+                    alert("Student not found.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

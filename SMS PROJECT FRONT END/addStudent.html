@@ -17,13 +17,13 @@
         <nav>
             <p class="nav-title"><i class="fas fa-bars menu-icon">SMS</i></p>
             <input type="text" placeholder="Search...">
-            <button><i class="fas fa-home"></i> Site Home</button>
-            <button><i class="fas fa-user-plus"></i> Add Student</button>
-            <button><i class="fas fa-user-minus"></i> Remove Student</button>
-            <button><i class="fas fa-list"></i> List Students</button>
-            <button><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
+            <button id="homeBtn"><i class="fas fa-home"></i> Site Home</button>
+            <button id="addStudentBtn"><i class="fas fa-user-plus"></i> Add Student</button>
+            <button id="removeStudentBtn"><i class="fas fa-user-minus"></i> Remove Student</button>
+            <button id="listStudentBtn"><i class="fas fa-list"></i> List Students</button>
+            <button id="coursesBtn"><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
             <div class="logout">
-                <button><i class="fas fa-sign-in-alt"></i> Logout</button>
+                <button id="logoutBtn"><i class="fas fa-sign-in-alt"></i> Logout</button>
             </div>
         </nav>
         <div class="right-layer">
@@ -176,6 +176,31 @@
             },3000);
         }
         </script>
+            <script>
+                document.getElementById("homeBtn").addEventListener("click", function() {
+                    window.location.href = "home.html";
+                });
+            
+                document.getElementById("addStudentBtn").addEventListener("click", function() {
+                    window.location.href = "addStudent.html";
+                });
+            
+                document.getElementById("removeStudentBtn").addEventListener("click", function() {
+                    window.location.href = "removeStudent.html";
+                });
+            
+                document.getElementById("listStudentBtn").addEventListener("click", function() {
+                    window.location.href = "listStudents.html";
+                });
+            
+                document.getElementById("coursesBtn").addEventListener("click", function() {
+                    window.location.href = "courses.html";
+                });
+            
+                document.getElementById("logoutBtn").addEventListener("click", function() {
+                    window.location.href = "index.html";
+                });
+            </script>
         
 </body>
 </html>

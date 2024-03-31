@@ -15,17 +15,20 @@
 
     <div class="container">
         <nav>
-            <div class="small"><div class="white-box "><i class="fas fa-bars menu-icon"></i></div><h2>SMS</h2></h2></div><br>
+            <div class="small">
+                <div class="white-box "><i class="fas fa-bars menu-icon"></i></div>
+                <h2>SMS</h2>
+            </div><br>
             <input type="text" placeholder="Search...">
-            <button><i class="fas fa-home"></i> Site Home</button>
-            <button><i class="fas fa-user-plus"></i> Add Student</button>
-            <button><i class="fas fa-user-minus"></i> Remove Student</button>
-            <button><i class="fas fa-list"></i> List Students</button>
-            <button><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
+            <button id="homeBtn"><i class="fas fa-home"></i> Site Home</button>
+            <button id="addStudentBtn"><i class="fas fa-user-plus"></i> Add Student</button>
+            <button id="removeStudentBtn"><i class="fas fa-user-minus"></i> Remove Student</button>
+            <button id="listStudentBtn"><i class="fas fa-list"></i> List Students</button>
+            <button id="coursesBtn"><i class="fas fa-wallet"></i> Courses</button><br><br><br><br><br>
             <div class="logout">
-                <button><i class="fas fa-sign-in-alt"></i> Logout</button>
+                <button id="logoutBtn"><i class="fas fa-sign-in-alt"></i> Logout</button>
             </div>
-        </nav>
+        </nav>        
         <div class="right-layer">
             <div class="main-title-box">Activity Logged</div>
             <div class="home-page-content-box">
@@ -149,7 +152,31 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.getElementById("homeBtn").addEventListener("click", function() {
+            window.location.href = "home.html";
+        });
+    
+        document.getElementById("addStudentBtn").addEventListener("click", function() {
+            window.location.href = "addStudent.html";
+        });
+    
+        document.getElementById("removeStudentBtn").addEventListener("click", function() {
+            window.location.href = "removeStudent.html";
+        });
+    
+        document.getElementById("listStudentBtn").addEventListener("click", function() {
+            window.location.href = "listStudents.html";
+        });
+    
+        document.getElementById("coursesBtn").addEventListener("click", function() {
+            window.location.href = "courses.html";
+        });
+    
+        document.getElementById("logoutBtn").addEventListener("click", function() {
+            window.location.href = "index.html";
+        });
+    </script>
     <footer>
         <p>Copyrights © 2024 General Sir John Kotelawala defence University. All rights reserved.</p>
     </footer>

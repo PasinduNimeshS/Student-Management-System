@@ -26,7 +26,14 @@
         <div class="right-layer" >
             <div class="right-layer-inner">
                 <div class="box form-box">
-                    <form action="login.php" method="post">
+                    <!-- <form action="login.php" method="post">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username" autocomplete="username">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password" autocomplete="current-password">
+                        <input type="submit" value="Login">
+                    </form> -->
+                    <form onsubmit="return validateForm()">
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required placeholder="Enter your username" autocomplete="username">
                         <label for="password">Password:</label>
@@ -41,5 +48,25 @@
     <footer>
         <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
     </footer>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if username and password are correct
+            if (username === "PasinduNimesh" && password === "Pasindu123") {
+                // Redirect to home.html
+                window.location.href = "home.html";
+            } else {
+                // Show error message
+                alert("Your username or password is incorrect");
+                // Clear the password field
+                document.getElementById("password").value = "";
+            }
+
+            // Prevent form submission
+            return false;
+        }
+    </script>
 </body>
 </html>

@@ -147,3 +147,53 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #333;
 }
+/* drop down with check box styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 3px;
+    cursor: pointer;
+    width: 180px; /* Set width to 50px */
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 5px;
+}
+.dropdown-toggle:hover {
+    background-color: rgb(204, 204, 204); 
+    color: #333; /* Adjust text color if needed */
+}

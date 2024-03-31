@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student-Student Management System</title>
-    <link rel="stylesheet" href="home.css"> <!-- Ensure this file exists and contains relevant styles -->
+    <link rel="stylesheet" href="addStudent.css"> <!-- Ensure this file exists and contains relevant styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -84,15 +84,26 @@
                 </div>
                 <div class="input-group">
                     <label for="choose-course">Choose Course:</label>
-                    <select id="choose-course" name="choose-course" required>
-                        <option value="" disabled selected>Select a course</option>
-                        <option value="Software Engineering">Software Engineering</option>
-                        <option value="Computer Science">Computer Science</option>
-                        <!-- Add more options as needed -->
-                    </select>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Courses
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="checkbox1" name="course" value="Software Engineering">
+                                <label for="checkbox1">Software Engineering</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="checkbox2" name="course" value="Computer Science">
+                                <label for="checkbox2">Computer Science</label>
+                            </div>
+                            <!-- Add more checkboxes as needed -->
+                        </div>
+                    </div>
                 </div>
+                
 
-                <button type="submit">Done</button>
+                <button type="submit" onclick="showAlert()">Done</button>
             </form>
         </div>
     </div>
@@ -100,5 +111,71 @@
     <footer>
         <p>Copyrights © 2024 General Sir John Kotelawala Defence University. All rights reserved.</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdownToggle = document.querySelector('.dropdown-toggle');
+            var dropdownMenu = document.querySelector('.dropdown-menu');
+        
+            dropdownToggle.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+            });
+        
+            document.addEventListener('click', function (event) {
+                var isClickInside = dropdownToggle.contains(event.target) || dropdownMenu.contains(event.target);
+                if (!isClickInside) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+        
+        function showAlert() {
+            var alertElement = document.createElement("div");
+            alertElement.style.position = "fixed";
+            alertElement.style.top = "50%";
+            alertElement.style.left = "50%";
+            alertElement.style.transform = "translate(-50%, -50%)";
+            alertElement.style.backgroundColor = "#141353";
+            alertElement.style.padding = "20px";
+            alertElement.style.border = "1px solid black";
+            alertElement.style.width = "350px";
+            alertElement.style.height = "150px";
+            alertElement.style.borderRadius = "15px";
+        
+            var circleElement = document.createElement("div");
+            circleElement.style.width = "70px";
+            circleElement.style.height = "70px";
+            circleElement.style.backgroundColor = "#32F546";
+            circleElement.style.borderRadius = "50%";
+            circleElement.style.position = "relative";
+            circleElement.style.margin = "auto";
+        
+            var checkIcon = document.createElement("i");
+            checkIcon.className = "fas fa-check";
+            checkIcon.style.color = "black";
+            checkIcon.style.fontSize = "40px";
+            checkIcon.style.position = "absolute";
+            checkIcon.style.top = "50%";
+            checkIcon.style.left = "50%";
+            checkIcon.style.transform = "translate(-50%, -50%)";
+        
+            circleElement.appendChild(checkIcon);
+            alertElement.appendChild(circleElement);
+        
+            var paragraphElement = document.createElement("p");
+            paragraphElement.innerHTML = "Student added to the system<br>successfully.";
+            paragraphElement.style.textAlign = "center";
+            paragraphElement.style.color = "white";
+            paragraphElement.style.fontFamily = "Inter";
+        
+            alertElement.appendChild(paragraphElement);
+        
+            document.body.appendChild(alertElement);
+        
+            setTimeout(function() {
+                document.body.removeChild(alertElement);
+            },3000);
+        }
+        </script>
+        
 </body>
 </html>

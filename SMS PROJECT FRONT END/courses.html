@@ -77,7 +77,7 @@
                     <div class="part3"></div>
                 </div>
                 <div class="button-container">
-                    <button id="addButton" class="add-button">Add</button>
+                    <button id="addButton" onclick="showAlert()" class="add-button">Add</button>
                 </div>
             </div>
         </div>
@@ -209,5 +209,86 @@
             });
         });
     </script>
+    <script>
+        function showAlert() {
+            var alertElement = document.createElement("div");
+            alertElement.style.position = "fixed";
+            alertElement.style.top = "50%";
+            alertElement.style.left = "50%";
+            alertElement.style.transform = "translate(-50%, -50%)";
+            alertElement.style.backgroundColor = "#141353";
+            alertElement.style.padding = "20px";
+            alertElement.style.border = "1px solid black";
+            alertElement.style.width = "350px"; // Set width
+            alertElement.style.height = "150px"; // Set height
+            alertElement.style.borderRadius = "15px"; // Set border radius
+    
+            // Create circle element
+            var circleElement = document.createElement("div");
+            circleElement.style.width = "70px";
+            circleElement.style.height = "70px";
+            circleElement.style.backgroundColor = "#32F546";
+            circleElement.style.borderRadius = "50%";
+            circleElement.style.position = "relative";
+            circleElement.style.margin = "auto";
+    
+            // Create check icon
+            var checkIcon = document.createElement("i");
+            checkIcon.className = "fas fa-check";
+            checkIcon.style.color = "black";
+            checkIcon.style.fontSize = "40px";
+            checkIcon.style.position = "absolute";
+            checkIcon.style.top = "50%";
+            checkIcon.style.left = "50%";
+            checkIcon.style.transform = "translate(-50%, -50%)";
+    
+            circleElement.appendChild(checkIcon);
+            alertElement.appendChild(circleElement);
+    
+            // Create paragraph element
+            var paragraphElement = document.createElement("p");
+            paragraphElement.innerHTML = "New Semester subjects added<br>successfully.";
+            paragraphElement.style.textAlign = "center";
+            paragraphElement.style.color = "white";
+            paragraphElement.style.fontFamily = "Inter";
+    
+            alertElement.appendChild(paragraphElement);
+    
+            document.body.appendChild(alertElement);
+    
+            // Set timeout to remove alert after 1000 milliseconds
+            setTimeout(function() {
+                document.body.removeChild(alertElement);
+            }, 3000);
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Your existing code here...
+
+    // Event listener for the "Add" button click
+    document.getElementById("addButton").addEventListener("click", function() {
+        // Check if at least one subject is selected
+        const checkboxes = document.querySelectorAll('.subjects-container input[type="checkbox"]');
+        let atLeastOneSelected = false;
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                atLeastOneSelected = true;
+            }
+        });
+
+        // If at least one subject is selected, close the popup box
+        if (atLeastOneSelected) {
+            popupContainer.style.display = "none";
+        } else {
+            // Otherwise, show an alert or take any other appropriate action
+            alert("Please select at least one subject.");
+            // You can choose to do nothing or provide feedback to the user
+        }
+    });
+});
+
+    </script>
+    
 </body>
 </html>

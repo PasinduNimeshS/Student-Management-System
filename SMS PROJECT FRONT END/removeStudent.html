@@ -69,7 +69,7 @@
                     <span style="color: red; font-size: 10px;">Are you sure you want to delete this record?<br>Please press the "Yes" button.</span>
                 </div>
                 <br><br>
-                <button type="submit" style="width: fit-content;">Done</button>
+                <button type="submit" onclick="showAlert()" style="width: fit-content;">Yes</button>
                 
             </form>
         </div>
@@ -105,5 +105,59 @@
             });
         });
     </script>
+    <script>
+    function showAlert() {
+        var alertElement = document.createElement("div");
+        alertElement.style.position = "fixed";
+        alertElement.style.top = "50%";
+        alertElement.style.left = "50%";
+        alertElement.style.transform = "translate(-50%, -50%)";
+        alertElement.style.backgroundColor = "#141353";
+        alertElement.style.padding = "20px";
+        alertElement.style.border = "1px solid black";
+        alertElement.style.width = "350px";
+        alertElement.style.height = "150px";
+        alertElement.style.borderRadius = "15px";
+
+        var circleElement = document.createElement("div");
+        circleElement.style.width = "70px";
+        circleElement.style.height = "70px";
+        circleElement.style.backgroundColor = "#32F546";
+        circleElement.style.borderRadius = "50%";
+        circleElement.style.position = "relative";
+        circleElement.style.margin = "auto";
+
+        var checkIcon = document.createElement("i");
+        checkIcon.className = "fas fa-check";
+        checkIcon.style.color = "black";
+        checkIcon.style.fontSize = "40px";
+        checkIcon.style.position = "absolute";
+        checkIcon.style.top = "50%";
+        checkIcon.style.left = "50%";
+        checkIcon.style.transform = "translate(-50%, -50%)";
+
+        circleElement.appendChild(checkIcon);
+        alertElement.appendChild(circleElement);
+
+        var paragraphElement = document.createElement("p");
+        paragraphElement.innerHTML = "Student deleted from the system<br>successfully.";
+        paragraphElement.style.textAlign = "center";
+        paragraphElement.style.color = "white";
+        paragraphElement.style.fontFamily = "Inter";
+
+        alertElement.appendChild(paragraphElement);
+
+        document.body.appendChild(alertElement);
+
+        setTimeout(function() {
+            document.body.removeChild(alertElement);
+        }, 3000);
+
+        // Prevent form submission
+        return false;
+    }
+</script>
+
+      
 </body>
 </html>

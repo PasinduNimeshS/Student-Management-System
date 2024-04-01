@@ -34,7 +34,7 @@
     padding: 30px 20px; /* Adjust padding as needed */
 }
 .system-title {
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-left: 30px;
     color: #1c0f52; /* Header color */
     font-size: 6vw; /* Set font size relative to viewport width */
@@ -88,4 +88,9 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+p{
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
 }

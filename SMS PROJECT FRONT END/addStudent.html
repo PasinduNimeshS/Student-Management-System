@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <button type="submit" onclick="showAlert()">Done</button>
             </form>
@@ -115,11 +115,11 @@
         document.addEventListener('DOMContentLoaded', function () {
             var dropdownToggle = document.querySelector('.dropdown-toggle');
             var dropdownMenu = document.querySelector('.dropdown-menu');
-        
+
             dropdownToggle.addEventListener('click', function () {
                 dropdownMenu.classList.toggle('show');
             });
-        
+
             document.addEventListener('click', function (event) {
                 var isClickInside = dropdownToggle.contains(event.target) || dropdownMenu.contains(event.target);
                 if (!isClickInside) {
@@ -127,7 +127,7 @@
                 }
             });
         });
-        
+
         function showAlert() {
             var alertElement = document.createElement("div");
             alertElement.style.position = "fixed";
@@ -140,7 +140,7 @@
             alertElement.style.width = "350px";
             alertElement.style.height = "150px";
             alertElement.style.borderRadius = "15px";
-        
+
             var circleElement = document.createElement("div");
             circleElement.style.width = "70px";
             circleElement.style.height = "70px";
@@ -148,7 +148,7 @@
             circleElement.style.borderRadius = "50%";
             circleElement.style.position = "relative";
             circleElement.style.margin = "auto";
-        
+
             var checkIcon = document.createElement("i");
             checkIcon.className = "fas fa-check";
             checkIcon.style.color = "black";
@@ -157,20 +157,20 @@
             checkIcon.style.top = "50%";
             checkIcon.style.left = "50%";
             checkIcon.style.transform = "translate(-50%, -50%)";
-        
+
             circleElement.appendChild(checkIcon);
             alertElement.appendChild(circleElement);
-        
+
             var paragraphElement = document.createElement("p");
             paragraphElement.innerHTML = "Student added to the system<br>successfully.";
             paragraphElement.style.textAlign = "center";
             paragraphElement.style.color = "white";
             paragraphElement.style.fontFamily = "Inter";
-        
+
             alertElement.appendChild(paragraphElement);
-        
+
             document.body.appendChild(alertElement);
-        
+
             setTimeout(function() {
                 document.body.removeChild(alertElement);
             },3000);
@@ -180,27 +180,27 @@
                 document.getElementById("homeBtn").addEventListener("click", function() {
                     window.location.href = "home.html";
                 });
-            
+
                 document.getElementById("addStudentBtn").addEventListener("click", function() {
                     window.location.href = "addStudent.html";
                 });
-            
+
                 document.getElementById("removeStudentBtn").addEventListener("click", function() {
                     window.location.href = "removeStudent.html";
                 });
-            
+
                 document.getElementById("listStudentBtn").addEventListener("click", function() {
                     window.location.href = "listStudents.html";
                 });
-            
+
                 document.getElementById("coursesBtn").addEventListener("click", function() {
                     window.location.href = "courses.html";
                 });
-            
+
                 document.getElementById("logoutBtn").addEventListener("click", function() {
                     window.location.href = "index.html";
                 });
             </script>
-        
+
 </body>
 </html>
